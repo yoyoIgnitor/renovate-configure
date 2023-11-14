@@ -14,8 +14,7 @@ module.exports = {
       "hostType": "docker",       
     },
     {
-        "matchHost": ["quay.io"],
-        "hostType": "Quay",       
+        "matchHost": ["quay.io"],       
     },
   ]
 }
