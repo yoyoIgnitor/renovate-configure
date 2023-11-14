@@ -1,7 +1,8 @@
 const repos = JSON.parse(process.env.REPOSITORIES || '[]');
 
 module.exports = {
-  endpoint: "github.com",
+  // endpoint: "github.com",
+  platform: 'github',
   repositories: repos.repositories,
   onboardingConfig: {"$schema": "https://docs.renovatebot.com/renovate-schema.json"},
   extends: ["local>gkiranch/renovate-configure"],
