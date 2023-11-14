@@ -10,7 +10,7 @@ module.exports = {
   gitAuthor:"GK self-hosted Renovate Bot <123456+gk-self-hosted-renovate[bot]@users.noreply.github.com>",  
   "hostRules": [
     {
-      "matchHost": "docker.io",
+      "matchHost": ["docker.io", "quay.io"],
       "hostType": "docker",       
     }
   ]
