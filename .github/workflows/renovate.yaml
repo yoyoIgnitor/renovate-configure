@@ -1,0 +1,55 @@
+name: Renovate
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types:
+      - opened
+      - edited
+      - synchronize
+      - reopened
+  schedule:
+    - cron: '0 */12 * * *'  #runs every 12 hours
+jobs:
+  renovate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3.1.0
+      #- name: Get token
+      #  id: get_token
+      #  uses: gkiranch/github-actions/local-repos/github-app-token@master
+      #  with:
+      #    private_key: ${{ secrets.PRIVATE_KEY }}
+      #    app_id: ${{ secrets.APP_ID }}
+      #- name: Retrieve secrets
+      #  uses: gkiranch/github-actions/local-repos/aws-secretsmanager-get-secrets@master
+      #  env:
+      #    AWS_REGION: us-east-1
+      #  with:
+      #    secret-ids: |
+      #
+      #    parse-json-secrets: true
+      - name: Validate and set repositories
+        run: |
+          JSON=$(yq e -o=json . < repos/repositories.yaml)
+          echo $JSON | jq . > /dev/null
+          if [ $? -eq 0 ]; then
+            JSON=$(echo $JSON | tr -d '\n')
+            echo "REPOSITORIES=$JSON" >> $GITHUB_ENV
+          else
+            echo "Invalid JSON"
+            exit 1
+          fi
+      - name: Run Renovate
+        uses: renovatebot/github-action@v39.1.1
+        with:
+          configurationFile: config.js
+          #token: '${{ steps.get_token.outputs.token }}'
+          env-regex: "^(?:RENOVATE_\\w+|LOG_LEVEL|GITHUB_COM_TOKEN|NODE_OPTIONS|REPOSITORIES)$"
+        env:
+          LOG_LEVEL: debug
+          REPOSITORIES: ${{ env.REPOSITORIES }}
+          RENOVATE_DRY_RUN: ${{ github.event_name == 'pull_request' && 'full' || '' }}
