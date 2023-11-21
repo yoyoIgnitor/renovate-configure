@@ -22,8 +22,8 @@ jobs:
         id: get_token
         uses: actions/create-github-app-token@v1
         with:
-          private_key: ${{ secrets.PRIVATE_KEY }}
-          app_id: ${{ secrets.APP_ID }}
+          private-key: ${{ secrets.PRIVATE_KEY }}
+          app-id: ${{ secrets.APP_ID }}
       #- name: Retrieve secrets
       #  uses: gkiranch/github-actions/local-repos/aws-secretsmanager-get-secrets@master
       #  env:
