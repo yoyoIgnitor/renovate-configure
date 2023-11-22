@@ -23,8 +23,8 @@ jobs:
         uses: actions/create-github-app-token@v1
         with:
           private_key: ${{ secrets.PRIVATE_KEY }}
-          app-id: ${{ vars.APP_ID }}
-          #pp_id: ${{ secrets.APP_ID }}
+          #app-id: ${{ vars.APP_ID }}
+          app_id: ${{ secrets.APP_ID }}
           #installation_retrieval_mode: organization
           
       #- name: Retrieve secrets
