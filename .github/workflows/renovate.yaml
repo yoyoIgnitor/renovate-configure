@@ -24,6 +24,8 @@ jobs:
         with:
           private_key: ${{ secrets.PRIVATE_KEY }}
           app_id: ${{ secrets.APP_ID }}
+          installation_retrieval_mode: organization
+          
       #- name: Retrieve secrets
       #  uses: gkiranch/github-actions/local-repos/aws-secretsmanager-get-secrets@master
       #  env:
