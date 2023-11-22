@@ -20,11 +20,12 @@ jobs:
         uses: actions/checkout@v3.1.0
       - name: Get token
         id: get_token
-        uses: tibdex/github-app-token@v2
+        uses: actions/create-github-app-token@v1
         with:
           private_key: ${{ secrets.PRIVATE_KEY }}
-          app_id: ${{ secrets.APP_ID }}
-          installation_retrieval_mode: organization
+          app-id: ${{ vars.APP_ID }}
+          #pp_id: ${{ secrets.APP_ID }}
+          #installation_retrieval_mode: organization
           
       #- name: Retrieve secrets
       #  uses: gkiranch/github-actions/local-repos/aws-secretsmanager-get-secrets@master
