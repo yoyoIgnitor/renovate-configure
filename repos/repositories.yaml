@@ -1,3 +1,3 @@
 repositories:
-  - gkiranch/medusa
+  # - gkiranch/medusa
   - gkiranch/docker-reno
