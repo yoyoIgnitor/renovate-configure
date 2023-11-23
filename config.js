@@ -20,9 +20,8 @@ module.exports = {
     {
       "matchHost": "https://kiranrenovate.jfrog.io",
       "hostType": "docker",
-      "username":  process.env.RENOVATE_ART_SECRET_USERNAME,
-      "password": process.env.ARTIFACTORY_API_KEY, 
-      "authType": "Basic"     
+      "username":  'renovate',
+      "password": '!@Renovate12',      
     }
   ]
 }
