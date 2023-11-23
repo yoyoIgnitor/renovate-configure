@@ -21,8 +21,8 @@ module.exports = {
     {
       "matchHost": "https://kiranrenovate.jfrog.io/",
       "hostType": "docker",
-      "username": process.env.RENOVATE_ART_SECRET_USERNAME,
-      "password": process.env.RENOVATE_ART_SECRET_PASSWORD,      
+      "username": process.env.REN_TEST_USER,
+      "password": process.env.REN_TEST_PASSWORD,      
     }
   ]
 }
