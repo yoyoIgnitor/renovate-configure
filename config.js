@@ -9,12 +9,19 @@ module.exports = {
   // username: 'gk-self-hosted-renovate[bot]',
   gitAuthor:"GK self-hosted Renovate Bot <123456+gk-self-hosted-renovate[bot]@users.noreply.github.com>",  
   "hostRules": [
+    //{
+    //  "matchHost": ["docker.io"],
+    //  "hostType": "docker",       
+    //},
+    //{
+    //    "matchHost": ["quay.io"],       
+    //},
+
     {
-      "matchHost": ["docker.io"],
-      "hostType": "docker",       
-    },
-    {
-        "matchHost": ["quay.io"],       
-    },
+      "matchHost": "kiranrenovate.jfrog.io",
+      "hostType": "docker",
+      "username":  process.env.RENOVATE_ART_SECRET_USERNAME,
+      "password": process.env.RENOVATE_ART_SECRET_PASSWORD,      
+    }
   ]
 }
