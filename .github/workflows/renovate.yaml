@@ -57,5 +57,5 @@ jobs:
           LOG_LEVEL: debug
           REPOSITORIES: ${{ env.REPOSITORIES }}
           RENOVATE_DRY_RUN: ${{ github.event_name == 'pull_request' && 'full' || '' }}
-          username: ${{ secrets.RENOVATE_ART_SECRET_USERNAME }}
-          password: ${{ secrets.RENOVATE_ART_SECRET_PASSWORD }}
+          RENOVATE_ART_SECRET_USERNAME: ${{ secrets.RENOVATE_ART_SECRET_USERNAME }}
+          RENOVATE_ART_SECRET_PASSWORD: ${{ secrets.RENOVATE_ART_SECRET_PASSWORD }}
