@@ -7,7 +7,7 @@ module.exports = {
   onboardingConfig: {"$schema": "https://docs.renovatebot.com/renovate-schema.json"},
   extends: ["local>yoyoIgnitor/renovate-configure"],
   // username: 'gk-self-hosted-renovate[bot]',
-  username: 'renovate'
+  username: 'renovate',
   gitAuthor:"GK self-hosted Renovate Bot <123456+gk-self-hosted-renovate[bot]@users.noreply.github.com>",  
   "hostRules": [
     //{
