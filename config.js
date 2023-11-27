@@ -23,4 +23,4 @@ module.exports = {
       "password": process.env.RENOVATE_ART_SECRET_PASSWORD,            
     },
   ],
-}
+};
