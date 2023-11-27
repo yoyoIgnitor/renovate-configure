@@ -21,6 +21,6 @@ module.exports = {
       "hostType": "maven",
       "username": process.env.RENOVATE_ART_SECRET_USERNAME,
       "password": process.env.RENOVATE_ART_SECRET_PASSWORD,            
-    }
-  ]
+    },
+  ],
 }
