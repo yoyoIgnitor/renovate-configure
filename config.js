@@ -17,6 +17,7 @@ module.exports = {
       "password": process.env.RENOVATE_ART_SECRET_PASSWORD,            
     },
     {
+      "matchHost": "kiranrenovate.jfrog.io",
       "hostType": "maven",
       "username": process.env.RENOVATE_ART_SECRET_USERNAME,
       "password": process.env.RENOVATE_ART_SECRET_PASSWORD,            
