@@ -1,6 +1,6 @@
 {
     "extends": ["config:base", ":dependencyDashboard", ":semanticCommits"],
-    "enabledManagers": ["dockerfile","maven"],
+    "enabledManagers": ["dockerfile"],
     "commitMessageAction": "bump",
     "onboardingCommitMessage": "update dependencies with Renovate"
 }
