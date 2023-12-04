@@ -59,4 +59,4 @@ jobs:
           RENOVATE_DRY_RUN: ${{ github.event_name == 'pull_request' && 'full' || '' }}
           RENOVATE_ART_SECRET_USERNAME: ${{ secrets.RENOVATE_ART_SECRET_USERNAME }}
           RENOVATE_ART_SECRET_PASSWORD: ${{ secrets.RENOVATE_ART_SECRET_PASSWORD }}
-          OTEL_EXPORTER_OTLP_ENDPOINT: "http://ec2-3-136-37-28.us-east-2.compute.amazonaws.com:4318"
+          OTEL_EXPORTER_OTLP_ENDPOINT: ${{ secrets.OTEL_EXPORTER_OTLP_ENDPOINT }}
