@@ -55,6 +55,7 @@ jobs:
           env-regex: "^(?:RENOVATE_\\w+|LOG_LEVEL|GITHUB_COM_TOKEN|NODE_OPTIONS|REPOSITORIES)$"
         env:
           LOG_LEVEL: debug
+          LOG_FORMAT: json
           REPOSITORIES: ${{ env.REPOSITORIES }}
           RENOVATE_DRY_RUN: ${{ github.event_name == 'pull_request' && 'full' || '' }}
           RENOVATE_ART_SECRET_USERNAME: ${{ secrets.RENOVATE_ART_SECRET_USERNAME }}
