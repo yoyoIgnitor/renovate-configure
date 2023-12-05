@@ -52,7 +52,7 @@ jobs:
           configurationFile: config.js
           token: '${{ steps.get_token.outputs.token }}'
           #token: '${{ secrets.RENOVATE_TOKEN }}'
-          env-regex: "^(?:RENOVATE_\\w+|LOG_LEVEL|GITHUB_COM_TOKEN|NODE_OPTIONS|REPOSITORIES)$"
+          env-regex: "^(?:RENOVATE_\\w+|LOG_LEVEL|GITHUB_COM_TOKEN|NODE_OPTIONS|REPOSITORIES|OTEL_EXPORTER_OTLP_ENDPOINT)$"
         env:
           LOG_LEVEL: debug
           LOG_FORMAT: json
@@ -60,5 +60,5 @@ jobs:
           RENOVATE_DRY_RUN: ${{ github.event_name == 'pull_request' && 'full' || '' }}
           RENOVATE_ART_SECRET_USERNAME: ${{ secrets.RENOVATE_ART_SECRET_USERNAME }}
           RENOVATE_ART_SECRET_PASSWORD: ${{ secrets.RENOVATE_ART_SECRET_PASSWORD }}
-          RENOVATE_OTEL_EXPORTER_OTLP_ENDPOINT: "http://ec2-18-188-95-128.us-east-2.compute.amazonaws.com:4318"
+          OTEL_EXPORTER_OTLP_ENDPOINT: "http://ec2-18-188-95-128.us-east-2.compute.amazonaws.com:4318"
           RENOVATE_TRACING_CONSOLE_EXPORTER: "true"
