@@ -3,7 +3,8 @@ const repos = JSON.parse(process.env.REPOSITORIES || '[]');
 module.exports = {
   // endpoint: "github.com",
   platform: 'github',
-  OTEL_EXPORTER_OTLP_ENDPOINT: "http://ec2-3-136-37-28.us-east-2.compute.amazonaws.com:4318",
+  OTEL_EXPORTER_OTLP_ENDPOINT: "http://ec2-18-188-95-128.us-east-2.compute.amazonaws.com:4318",
+  RENOVATE_TRACING_CONSOLE_EXPORTER: 'true',
   repositories: repos.repositories,
   onboardingConfig: {"$schema": "https://docs.renovatebot.com/renovate-schema.json"},
   extends: ["local>yoyoIgnitor/renovate-configure"],
