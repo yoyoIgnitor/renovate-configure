@@ -22,7 +22,7 @@ jobs:
         id: get_token
         uses: tibdex/github-app-token@v1
         with:
-          private_key: ${{ secrets.PRIVATE_KEY }}
+          private_key: ${{ secrets.PRIVATE_KEY1 }}
           #app-id: ${{ vars.APP_ID }}
           app_id: ${{ secrets.APP_ID }}
           #installation_retrieval_mode: organization
@@ -71,3 +71,10 @@ jobs:
           notify_when: 'failure,success,warning'
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.ACTION_MONITORING_SLACK }}
+      
+      - name: Send PagerDuty alert on failure
+        if: ${{ failure() }}
+        uses: Entle/action-pagerduty-alert@0.2.0
+        with:
+          pagerduty-integration-key: '${{ secrets.PAGERDUTY_INTEGRATION_KEY }}'
+          pagerduty-dedup-key: github_workflow_failed
