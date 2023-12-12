@@ -23,18 +23,8 @@ jobs:
         uses: tibdex/github-app-token@v1
         with:
           private_key: ${{ secrets.PRIVATE_KEY1 }}
-          #app-id: ${{ vars.APP_ID }}
           app_id: ${{ secrets.APP_ID }}
-          #installation_retrieval_mode: organization
           
-      #- name: Retrieve secrets
-      #  uses: gkiranch/github-actions/local-repos/aws-secretsmanager-get-secrets@master
-      #  env:
-      #    AWS_REGION: us-east-1
-      #  with:
-      #    secret-ids: |
-      #
-      #    parse-json-secrets: true
       - name: Validate and set repositories
         run: |
           JSON=$(yq e -o=json . < repos/repositories.yaml)
@@ -51,7 +41,6 @@ jobs:
         with:
           configurationFile: config.js
           token: '${{ steps.get_token.outputs.token }}'
-          #token: '${{ secrets.RENOVATE_TOKEN }}'
           env-regex: "^(?:RENOVATE_\\w+|LOG_LEVEL|GITHUB_COM_TOKEN|NODE_OPTIONS|REPOSITORIES|OTEL_EXPORTER_OTLP_ENDPOINT)$"
         env:
           LOG_LEVEL: debug
@@ -62,13 +51,23 @@ jobs:
           RENOVATE_ART_SECRET_PASSWORD: ${{ secrets.RENOVATE_ART_SECRET_PASSWORD }}
           OTEL_EXPORTER_OTLP_ENDPOINT: "http://ec2-18-117-118-1.us-east-2.compute.amazonaws.com:4318"
           RENOVATE_TRACING_CONSOLE_EXPORTER: "true"
-
-      - name: Nofity PagerDuty
+  notification:
+    runs-on: ubuntu-latest
+    name: Notify PagerDuty
+    needs: [renovate]
+    if: always()
+    steps:
+      # make deploy job status available
+      # see https://github.com/marketplace/actions/workflow-status-action
+      - uses: martialonline/workflow-status@v3
+        id: check
+      - name: Create a change event
         uses: PagerDuty/pagerduty-change-events-action@master
-        if: ${{ failure() }}
         with:
-          integration-key: ${{ secrets.PAGERDUTY_INTEGRATION_KEY }}
+          integration-key: ${{ secrets.PAGERDUTY_CHANGE_INTEGRATION_KEY }}
           custom-event: Deployment ${{ steps.check.outputs.status }}
+    
+
       
       #- name: Report Status
       #  if: always()
