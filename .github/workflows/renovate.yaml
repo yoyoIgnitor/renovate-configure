@@ -64,7 +64,7 @@ jobs:
           RENOVATE_TRACING_CONSOLE_EXPORTER: "true"
 
       - name: Nofity PagerDuty
-        uses: PagerDuty/pagerduty-action@v1
+        uses: PagerDuty/pagerduty-change-events-action@master
         if: ${{ failure() }}
         with:
           event-action: trigger
