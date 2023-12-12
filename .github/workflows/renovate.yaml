@@ -69,19 +69,6 @@ jobs:
         with:
           integration-key: ${{ secrets.PAGERDUTY_INTEGRATION_KEY }}
           custom-event: Deployment ${{ steps.check.outputs.status }}
-          payload: |
-            {
-              "summary": "GitHub Actions Workflow Failed",
-              "source": "${{ github.repository }}",
-              "severity": "critical",
-              "custom_details": {
-                "workflow": "${{ github.workflow }}",
-                "commit_sha": "${{ github.sha }}",
-                "commit_message": "${{ github.event.head_commit.message }}",
-                "repository": "${{ github.repository }}",
-                "workflow_run_url": "${{ github.run_url }}"
-              }
-            }
       
       #- name: Report Status
       #  if: always()
