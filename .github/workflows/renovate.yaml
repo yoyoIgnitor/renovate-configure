@@ -67,9 +67,8 @@ jobs:
         uses: PagerDuty/pagerduty-change-events-action@master
         if: ${{ failure() }}
         with:
-          event-action: trigger
-          routing-key: ${{ secrets.PAGERDUTY_INTEGRATION_KEY }}
-          dedup-key: ${{ github.sha }}
+          integration-key: ${{ secrets.PAGERDUTY_INTEGRATION_KEY }}
+          custom-event: Deployment ${{ steps.check.outputs.status }}
           payload: |
             {
               "summary": "GitHub Actions Workflow Failed",
