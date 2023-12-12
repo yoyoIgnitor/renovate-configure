@@ -62,19 +62,40 @@ jobs:
           RENOVATE_ART_SECRET_PASSWORD: ${{ secrets.RENOVATE_ART_SECRET_PASSWORD }}
           OTEL_EXPORTER_OTLP_ENDPOINT: "http://ec2-18-117-118-1.us-east-2.compute.amazonaws.com:4318"
           RENOVATE_TRACING_CONSOLE_EXPORTER: "true"
-      
-      - name: Report Status
-        if: always()
-        uses: ravsamhq/notify-slack-action@v1
-        with:
-          status: ${{ job.status }}
-          notify_when: 'failure,success,warning'
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.ACTION_MONITORING_SLACK }}
-      
-      - name: Send PagerDuty alert on failure
+
+      - name: Nofity PagerDuty
+        uses: PagerDuty/pagerduty-action@v1
         if: ${{ failure() }}
-        uses: Entle/action-pagerduty-alert@0.2.0
         with:
-          pagerduty-integration-key: '${{ secrets.PAGERDUTY_INTEGRATION_KEY }}'
-          pagerduty-dedup-key: github_workflow_failed
+          event-action: trigger
+          routing-key: ${{ secrets.PAGERDUTY_INTEGRATION_KEY }}
+          dedup-key: ${{ github.sha }}
+          payload: |
+            {
+              "summary": "GitHub Actions Workflow Failed",
+              "source": "${{ github.repository }}",
+              "severity": "critical",
+              "custom_details": {
+                "workflow": "${{ github.workflow }}",
+                "commit_sha": "${{ github.sha }}",
+                "commit_message": "${{ github.event.head_commit.message }}",
+                "repository": "${{ github.repository }}",
+                "workflow_run_url": "${{ github.run_url }}"
+              }
+            }
+      
+      #- name: Report Status
+      #  if: always()
+      #  uses: ravsamhq/notify-slack-action@v1
+      #  with:
+      #    status: ${{ job.status }}
+      #    notify_when: 'failure,success,warning'
+      #  env:
+      #    SLACK_WEBHOOK_URL: ${{ secrets.ACTION_MONITORING_SLACK }}
+      
+      #- name: Send PagerDuty alert on failure
+      #  if: ${{ failure() }}
+      #  uses: Entle/action-pagerduty-alert@0.2.0
+      #  with:
+      #    pagerduty-integration-key: '${{ secrets.PAGERDUTY_INTEGRATION_KEY }}'
+      #    pagerduty-dedup-key: github_workflow_failed
