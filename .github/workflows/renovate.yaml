@@ -57,13 +57,13 @@ jobs:
     needs: [renovate]
     if: failure()
     steps:
-      - name: Run the script 
-        working-directory: ./scripts
-        run: ./script.sh {{ PAGERDUTY_API_TOKEN }}
       - name: Debug
         run: |
           pwd
           ls -l
+      - name: Run the script 
+        working-directory: ./scripts
+        run: ./script.sh {{ PAGERDUTY_API_TOKEN }}
     
 
       
