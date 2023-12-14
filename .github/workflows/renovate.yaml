@@ -58,7 +58,8 @@ jobs:
     if: failure()
     steps:
       - name: Run the script 
-        run: ./scripts/script.sh {{ PAGERDUTY_API_TOKEN }}
+        working-directory: ./scripts
+        run: ./script.sh {{ PAGERDUTY_API_TOKEN }}
     
 
       
