@@ -14,7 +14,7 @@ curl --request POST \
   --data '{
     "incident": {
       "type": "incident",
-      "title": "The server is on fire.",
+      "title": "Renovate GitHub Action failed.",
       "service": {
         "id": "P65NEYF",
         "type": "service_reference"
@@ -27,7 +27,7 @@ curl --request POST \
       "incident_key": "baf7cf21b1da41b4b0221008339ff357",
       "body": {
         "type": "incident_body",
-        "details": "A disk is getting full on this machine. You should investigate what is causing the disk to fill, and ensure that there is an automated process in place for ensuring data is rotated (eg. logs should have logrotate around them). If data is expected to stay on this disk forever, you should start planning to scale up to a larger disk."
+        "details": "The Renovate GHA has failed, please check the issue, mostly it might be an issue with the runner, please check the runbook."
       },
       "escalation_policy": {
         "id": "P0DXS5K",
