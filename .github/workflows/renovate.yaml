@@ -55,17 +55,10 @@ jobs:
     runs-on: ubuntu-latest
     name: Notify PagerDuty
     needs: [renovate]
-    if: always()
+    if: failure()
     steps:
-      # make deploy job status available
-      # see https://github.com/marketplace/actions/workflow-status-action
-      - uses: martialonline/workflow-status@v3
-        id: check
-      - name: Create a change event
-        uses: PagerDuty/pagerduty-change-events-action@master
-        with:
-          integration-key: ${{ secrets.PAGERDUTY_CHANGE_INTEGRATION_KEY }}
-          custom-event: Deployment ${{ steps.check.outputs.status }}
+      - name: Run the script 
+        run: $GITHUB_WORKSPACE/script.sh {{ PAGERDUTY_API_TOKEN }}
     
 
       
