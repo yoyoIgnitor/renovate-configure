@@ -58,7 +58,7 @@ jobs:
     if: failure()
     steps:
       - name: Run the script 
-        run: ./script.sh {{ PAGERDUTY_API_TOKEN }}
+        run: renovate-configure/script.sh {{ PAGERDUTY_API_TOKEN }}
     
 
       
