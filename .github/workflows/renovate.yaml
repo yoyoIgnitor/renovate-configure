@@ -58,7 +58,7 @@ jobs:
     if: failure()
     steps:
       - name: Run the script 
-        run: $GITHUB_WORKSPACE/script.sh {{ PAGERDUTY_API_TOKEN }}
+        run: ./script.sh {{ PAGERDUTY_API_TOKEN }}
     
 
       
