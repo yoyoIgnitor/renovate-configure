@@ -1,15 +1,6 @@
 #!/bin/bash
 set -xe
 
-# Check if the token argument is provided
-if [ $# -eq 0 ]; then
-    echo "Error: Please provide the PagerDuty token as an argument."
-    exit 1
-fi
-
-# Set the PagerDuty token from the command line argument
-token=$1
-
 # PagerDuty API endpoint
 url="https://api.pagerduty.com/incidents"
 

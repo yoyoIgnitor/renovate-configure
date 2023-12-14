@@ -65,7 +65,9 @@ jobs:
           ls -l
       - name: Run the script 
         working-directory: ./scripts
-        run: bash script.sh $PAGERDUTY_API_TOKEN
+        run: bash script.sh
+        env:
+          token: ${{ secrets.PAGERDUTY_API_TOKEN }}
     
 
       
