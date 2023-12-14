@@ -1,4 +1,5 @@
 #!/bin/bash
+set -xe
 
 # Check if the token argument is provided
 if [ $# -eq 0 ]; then
