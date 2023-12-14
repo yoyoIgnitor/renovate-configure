@@ -60,6 +60,10 @@ jobs:
       - name: Run the script 
         working-directory: ./scripts
         run: ./script.sh {{ PAGERDUTY_API_TOKEN }}
+      - name: Debug
+        run: |
+          pwd
+          ls -l
     
 
       
