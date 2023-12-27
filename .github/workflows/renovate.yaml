@@ -22,7 +22,7 @@ jobs:
         id: get_token
         uses: tibdex/github-app-token@v1
         with:
-          private_key: ${{ secrets.PRIVATE_KEY1 }}
+          private_key: ${{ secrets.PRIVATE_KEY }}
           app_id: ${{ secrets.APP_ID }}
           
       - name: Validate and set repositories
