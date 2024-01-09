@@ -71,8 +71,9 @@ jobs:
       - name: configure aws credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: arn:aws:iam::${AWS_ACCOUNT_ID}:role/github-oidc-role
+          role-to-assume: {{ secrets.OIDC_ROLE }}
           aws-region: us-east-1
+          role-session-name: GitHub-Actions-Session
       - name: Step name
         uses: aws-actions/aws-secretsmanager-get-secrets@v1
         with:
