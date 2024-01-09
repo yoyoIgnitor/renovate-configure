@@ -53,6 +53,8 @@ jobs:
           RENOVATE_TRACING_CONSOLE_EXPORTER: "true"
   notification:
     runs-on: ubuntu-latest
+    env:
+      AWS_ACCOUNT_ID: ${{ secrets.ACCOUNT_ID }}
     permissions:
       id-token: write
       contents: read
@@ -69,7 +71,7 @@ jobs:
       - name: configure aws credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: arn:aws:iam::{{ secrets.ACCOUNT_ID }}:role/github-oidc-role
+          role-to-assume: arn:aws:iam::${AWS_ACCOUNT_ID}:role/github-oidc-role
           aws-region: us-east-1
       - name: Step name
         uses: aws-actions/aws-secretsmanager-get-secrets@v1
