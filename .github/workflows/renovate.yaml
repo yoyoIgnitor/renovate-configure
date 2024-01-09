@@ -22,7 +22,7 @@ jobs:
         id: get_token
         uses: tibdex/github-app-token@v1
         with:
-          private_key: ${{ secrets.PRIVATE_KEY }}
+          private_key: ${{ secrets.PRIVATE_KEY1 }}
           app_id: ${{ secrets.APP_ID }}
           
       - name: Validate and set repositories
@@ -53,6 +53,9 @@ jobs:
           RENOVATE_TRACING_CONSOLE_EXPORTER: "true"
   notification:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
     name: Notify PagerDuty
     needs: [renovate]
     if: failure()
@@ -63,11 +66,22 @@ jobs:
         run: |
           pwd
           ls -l
+      - name: configure aws credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::{{ secrets.ACCOUNT_ID }}:role/github-oidc-role
+          aws-region: us-east-1
+      - name: Step name
+        uses: aws-actions/aws-secretsmanager-get-secrets@v1
+        with:
+          secret-ids:
+            PAGERDUTY_API_TOKEN, pagerdutytoken
+          parse-json-secrets: true
       - name: Run the script 
         working-directory: ./scripts
         run: bash script.sh
         env:
-          token: ${{ secrets.PAGERDUTY_API_TOKEN }}
+          token: ${{ env.PAGERDUTY_API_TOKEN }}
     
 
       
