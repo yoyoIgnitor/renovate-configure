@@ -79,7 +79,6 @@ jobs:
         with:
           secret-ids:
             PAGERDUTY_API_TOKEN, pagerdutytoken
-          parse-json-secrets: true
       - name: Run the script 
         working-directory: ./scripts
         run: bash script.sh
