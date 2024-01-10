@@ -10,7 +10,7 @@ curl --request POST \
   --header 'Accept: application/json' \
   --header "Authorization: Token token=$token" \
   --header 'Content-Type: application/json' \
-  --header 'From:chandapukiran.kumar@sentinelone.com ' \
+  --header 'From: ' \
   --data '{
     "incident": {
       "type": "incident",
