@@ -84,7 +84,7 @@ jobs:
         working-directory: ./scripts
         run: bash script.sh
         env:
-          token: ${{ env.PAGERDUTY_API_TOKEN }}
+          token: ${{ env.PAGERDUTY_API_TOKEN_PAGERDUTYTOKEN }}
     
 
       
