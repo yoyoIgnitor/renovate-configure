@@ -78,7 +78,7 @@ jobs:
         uses: aws-actions/aws-secretsmanager-get-secrets@v1
         with:
           secret-ids:
-            PAGERDUTY_API_TOKEN, pagerdutytoken
+            #PAGERDUTY_API_TOKEN, pagerdutytoken
             PAGERDUTY_API_TOKEN, pagerdutyeventtoken
           parse-json-secrets: true
       - name: Run the script 
