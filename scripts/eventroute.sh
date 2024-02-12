@@ -12,7 +12,7 @@ curl --request 'POST' \
 --data '{
   "payload": {
       "summary": "Test alert routeOrchestration",
-      "severity": "warning",
+      "severity": "Info",
       "source": "GitHub Action"
   },
   "routing_key": "R025TGSKQSZOKY3W5D1HG2KBE17D5I0S",
