@@ -79,10 +79,13 @@ jobs:
         with:
           secret-ids:
             PAGERDUTY_API_TOKEN, pagerdutytoken
+            PAGERDUTY_API_TOKEN, pagerdutyeventtoken
           parse-json-secrets: true
       - name: Run the script 
         working-directory: ./scripts
         run: bash eventroute.sh
+        env:
+          token: ${{ env.PAGERDUTY_API_TOKEN_PAGERDUTYEVENTTOKEN }}
       #- name: Run the script 
       #  working-directory: ./scripts
       #  run: bash script.sh

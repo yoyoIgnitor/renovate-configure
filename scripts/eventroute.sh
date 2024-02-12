@@ -15,6 +15,6 @@ curl --request 'POST' \
       "severity": "info",
       "source": "GitHub Action"
   },
-  "routing_key": "R025TGSKQSZOKY3W5D1HG2KBE17D5I0S",
+  "routing_key": "$token",
   "event_action": "trigger"
 }'
