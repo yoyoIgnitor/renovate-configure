@@ -1,3 +1,4 @@
 repositories:
   # - gkiranch/medusa
   - yoyoIgnitor/docker-reno
+  - yoyoIgnitor/test-custom
