@@ -1,5 +1,5 @@
 repositories:
-  - gkiranch/medusa
+ # - gkiranch/medusa
   - yoyoIgnitor/docker-reno
   - yoyoIgnitor/test-custom
-  - gkiranch/go
+  - yoyoIgnitor/go-test
