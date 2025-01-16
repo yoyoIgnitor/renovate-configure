@@ -3,3 +3,4 @@ repositories:
  # - yoyoIgnitor/docker-reno
  # - yoyoIgnitor/test-custom
   - yoyoIgnitor/go-test
+  - yoyoIgnitor/kiran-go
