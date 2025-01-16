@@ -1,6 +1,6 @@
 {
     "extends": ["config:base", ":dependencyDashboard", ":semanticCommits"],
     "enabledManagers": ["dockerfile"],
-    "commitMessageAction": "bump",
-    "onboardingCommitMessage": "update dependencies with Renovate"
+    "commitMessageAction": "fix:[PLAT-0000]bump",
+    "onboardingCommitMessage": "chore:[PLAT-0000] update dependencies with Renovate"
 }

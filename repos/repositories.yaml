@@ -1,6 +1,6 @@
 repositories:
+  - yoyoIgnitor/go-test
+  - yoyoIgnitor/kiran-go
  # - gkiranch/medusa
  # - yoyoIgnitor/docker-reno
  # - yoyoIgnitor/test-custom
-  - yoyoIgnitor/go-test
-  - yoyoIgnitor/kiran-go
