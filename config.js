@@ -21,6 +21,11 @@ module.exports = {
       "hostType": "maven",
       "username": process.env.RENOVATE_ART_SECRET_USERNAME,
       "password": process.env.RENOVATE_ART_SECRET_PASSWORD,            
+    },
+    {
+      "matchHost": "https://github.com/yoyoIgnitor",
+      "token": process.env.GITHUB_COM_TOKEN,
+      "hostType": "go"
     }
   ]
 }
