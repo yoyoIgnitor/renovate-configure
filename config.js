@@ -24,7 +24,7 @@ module.exports = {
     },
     {
       "matchHost": "https://github.com/yoyoIgnitor",
-      "token": process.env.GITHUB_COM_TOKEN,
+      "token": "process.env.GITHUB_COM_TOKEN",
       "hostType": "go"
     }
   ]
