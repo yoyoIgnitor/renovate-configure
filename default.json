@@ -3,5 +3,5 @@
     "enabledManagers": ["dockerfile"],
     "commitMessagePrefix": "chore: [PLAT-0000] ",
     "commitMessageTopic": "{{depName}}",
-    "onboardingPrTitle": "chore:[PLAT-0000] Configure Renovate"
+    "onboardingPrTitle": " [PLAT-0000] Configure Renovate"
 }
