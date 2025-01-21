@@ -1,7 +1,7 @@
 {
     "extends": ["config:base", ":dependencyDashboard", ":semanticCommits"],
     "enabledManagers": ["dockerfile"],
-    "commitMessagePrefix": "chore: [PLAT-0000] ",
+    //"commitMessagePrefix": "chore: [PLAT-0000] ",
     "commitMessageTopic": "{{depName}}",
-    "onboardingPrTitle": " [PLAT-0000] Configure Renovate"
+    //"onboardingPrTitle": " [PLAT-0000] Configure Renovate"
 }
